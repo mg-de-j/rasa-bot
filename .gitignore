@@ -1,0 +1,15 @@
+# --- Rasa & Python Specifics ---
+.rasa/
+models/
+results/
+__pycache__/
+*.pyc
+
+# --- Environment & Secrets (IMPORTANT) ---
+.venv/
+rasa_env/
+.env
+.envrc
+
+# --- OS Specifics ---
+.DS_Store
