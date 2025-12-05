@@ -1,4 +1,11 @@
-# Back in the time travel bot
+## Back in the time travel bot
+
+# Requirements
+- 5 different flows
+- 10 different responses
+- 5 different slots
+- 1 if-statement (branching flow)
+- 1 link between flows
 
 # Notes
 
