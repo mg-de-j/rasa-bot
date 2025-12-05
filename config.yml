@@ -1,6 +1,6 @@
 recipe: default.v1
 language: en
-assistant_id: overcast-tube
+assistant_id: proud-printer
 pipeline:
 - name: CompactLLMCommandGenerator
   llm:
