@@ -1,35 +1,59 @@
 version: "3.1"
 
 slots:
-  recipient:
+  user_name:
     type: text
     mappings:
       - type: from_llm
-  amount:
-    type: float
-    mappings:
-      - type: from_llm
+  # -----------------------------------------------
+  # OUDE CODE
+  # -----------------------------------------------
+  # recipient:
+  #   type: text
+  #   mappings:
+  #     - type: from_llm
+  # amount:
+  #   type: float
+  #   mappings:
+  #     - type: from_llm
 
 responses:
-  utter_ask_recipient:
-    - text: "Who would you like to send money to?"
+  utter_welcome:
+    - text: "Greetings, traveler! I am Chronos. Ready to explore the past"
 
-  utter_ask_amount:
-    - text: "How much money would you like to send?"
+  utter_ask_user_name:
+    - text: "I need to know who I'm traveling with. What is your name?"
 
-  utter_transfer_complete:
-    - text: "All done. {amount} has been sent to {recipient}."
+  utter_nice_to_meet:
+    - text: "Pleasure to meet you, {user_name}. I will record you in my chronicles."
 
-  utter_free_chitchat_response:
-    - text: "placeholder"
-      metadata:
-        rephrase: True
-        rephrase_prompt: |
-          The following is a conversation with an AI assistant built with Rasa.
-          The assistant can help the user transfer money.
-          The assistant is helpful, creative, clever, and very friendly.
-          The user is making small talk, and the assistant should respond, keeping things light.
-          Context / previous conversation with the user:
-          {{history}}
-          {{current_input}}
-          Suggested AI Response:
+  utter_goodbye:
+    - text: "Farewell! The timeline will miss you. Safe travels back to the present!"
+
+  # -----------------------------------------------
+  # OUDE CODE
+  # -----------------------------------------------
+  # utter_ask_recipient:
+  #   - text: "Who would you like to send money to?"
+
+  # utter_ask_amount:
+  #   - text: "How much money would you like to send?"
+
+  # utter_transfer_complete:
+  #   - text: "All done. {amount} has been sent to {recipient}."
+
+  # utter_free_chitchat_response:
+  #   - text: "placeholder"
+  #     metadata:
+  #       rephrase: True
+  #       rephrase_prompt: |
+  #         The following is a conversation with an AI assistant built with Rasa.
+  #         The assistant can help the user transfer money.
+  #         The assistant is helpful, creative, clever, and very friendly.
+  #         The user is making small talk, and the assistant should respond, keeping things light.
+  #         Context / previous conversation with the user:
+  #         {{history}}
+  #         {{current_input}}
+  #         Suggested AI Response:
+
+  

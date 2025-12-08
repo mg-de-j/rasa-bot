@@ -1,8 +1,36 @@
 flows:
-  transfer_money:
-    description: Help users send money to friends and family.
+  greet_user:
+    description: user says hello or starts a conversation
     steps:
-      - collect: recipient
-      - collect: amount
-        description: the number of US dollars to send
-      - action: utter_transfer_complete
+      - action: utter_welcome
+
+  introduce_self:
+    description: user provides their name or introduces themselves
+    steps:
+      - collect: user_name
+      - action: utter_nice_to_meet
+
+  goodbye_user: 
+    description: user says goodbye or wants to end the conversation
+    steps:
+      - action: utter_goodbye
+
+  # time_travel:
+  #   description: transport the user to a specific year in the past
+
+  # quiz:
+  #   description: start a history quiz to test user knowledge
+
+  # -----------------------------------------------
+  # OUDE CODE
+  # -----------------------------------------------
+  # fact:
+  #   description: provide a fun fact about history or a specific year
+  # transfer_money:
+  #   description: Help users send money to friends and family.
+  #   steps:
+  #     - collect: recipient
+  #     - collect: amount
+  #       description: the number of US dollars to send
+  #     - action: utter_transfer_complete
+
