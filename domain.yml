@@ -1,35 +1,199 @@
 version: "3.1"
 
 slots:
-  recipient:
+  user_name:
     type: text
     mappings:
       - type: from_llm
-  amount:
-    type: float
+
+  question_1:
+    type: text
+    mappings:
+      - type: from_llm
+  
+  question_2:
+    type: text
+    mappings:
+      - type: from_llm
+  
+  question_3:
+    type: text
     mappings:
       - type: from_llm
 
+  question_4:
+    type: text
+    mappings:
+      - type: from_llm
+  
+  question_5:
+    type: text
+    mappings:
+      - type: from_llm
+  
+  question_6:
+    type: text
+    mappings:
+      - type: from_llm
+
+  question_7:
+    type: text
+    mappings:
+      - type: from_llm
+  
+  question_8:
+    type: text
+    mappings:
+      - type: from_llm
+  
+  question_9:
+    type: text
+    mappings:
+      - type: from_llm
+
+  question_10:
+    type: text
+    mappings:
+      - type: from_llm
+
+  question_11:
+    type: text
+    mappings:
+      - type: from_llm
+
+  question_12:
+    type: text
+    mappings:
+      - type: from_llm
+  
+  question_13:
+    type: text
+    mappings:
+      - type: from_llm
+  
+  question_14:
+    type: text
+    mappings:
+      - type: from_llm
+
+  question_15:
+    type: text
+    mappings:
+      - type: from_llm
+
+  questions_asked:
+    type: float
+    mappings:
+      - type: controlled
+  
+  quiz_score:
+    type: float
+    mappings:
+      - type: controlled
+
+  fact_year:
+    type: text 
+    mappings:
+      - type: from_llm
+
+  # -----------------------------------------------
+  # OUDE CODE
+  # -----------------------------------------------
+  # recipient:
+  #   type: text
+  #   mappings:
+  #     - type: from_llm
+  # amount:
+  #   type: float
+  #   mappings:
+  #     - type: from_llm
+
 responses:
-  utter_ask_recipient:
-    - text: "Who would you like to send money to?"
+  utter_welcome:
+    - text: "Greetings, traveler! I am Chronos. Ready to explore the past"
 
-  utter_ask_amount:
-    - text: "How much money would you like to send?"
+  utter_ask_user_name:
+    - text: "I need to know who I'm traveling with. What is your name?"
 
-  utter_transfer_complete:
-    - text: "All done. {amount} has been sent to {recipient}."
+  utter_nice_to_meet:
+    - text: "Pleasure to meet you, {user_name}. I will record you in my chronicles."
 
-  utter_free_chitchat_response:
-    - text: "placeholder"
-      metadata:
-        rephrase: True
-        rephrase_prompt: |
-          The following is a conversation with an AI assistant built with Rasa.
-          The assistant can help the user transfer money.
-          The assistant is helpful, creative, clever, and very friendly.
-          The user is making small talk, and the assistant should respond, keeping things light.
-          Context / previous conversation with the user:
-          {{history}}
-          {{current_input}}
-          Suggested AI Response:
+  utter_goodbye:
+    - text: "Farewell! The timeline will miss you. Safe travels back to the present!"
+    - text: "Bye"
+    - text: "See you later alligator"
+    - text: "Cheers"
+    - text: "Well okay then. Bye."
+
+  utter_start_quiz:
+    - text: "Let's start the quiz! I'll ask you 10 questions."
+  
+  utter_ask_question_1:
+    - text: "Question 1: Who was the first President of the USA?"
+  utter_ask_question_2:
+    - text: "Question 2: In which year did World War II end?"
+  utter_ask_question_3:
+    - text: "Question 3: Which empire was ruled by Julius Caesar?"
+  utter_ask_question_4:
+    - text: "Question 4: Who painted the Mona Lisa?"
+  utter_ask_question_5:
+    - text: "Question 5: What year did the Berlin Wall fall?"
+  utter_ask_question_6:
+    - text: "Question 6: Which country gifted the Statue of Liberty to the USA?"
+  utter_ask_question_7:
+    - text: "Question 7: Who was known as the 'Iron Lady'?"
+  utter_ask_question_8:
+    - text: "Question 8: Where were the first Olympic Games held?"
+  utter_ask_question_9:
+    - text: "Question 9: What ancient civilization built the pyramids?"
+  utter_ask_question_10:
+    - text: "Question 10: In which year did the Titanic sink?"
+  utter_ask_question_11:
+    - text: "Question 11: Who was the first man on the moon?"
+  utter_ask_question_12:
+    - text: "Question 12: Who was the British Prime Minister during World War II?"
+  utter_ask_question_13:
+    - text: "Question 13: Who invented the lightbulb?"
+  utter_ask_question_14:
+    - text: "Question 14: Who developed the theory of relativity?"
+  utter_ask_question_15:
+    - text: "Question 15: Which Roman city was destroyed by Mount Vesuvius?"
+  
+  utter_quiz_results:
+    - text: "You have scored {quiz_score} points out of {questions_asked} questions asked!"
+
+  utter_no_more_questions:
+    - text: "That was the last question! Let's check your final score."
+
+  utter_ask_fact_year:
+    - text: "Which year would you like to know a fun fact about?"
+
+  # -----------------------------------------------
+  # OUDE CODE
+  # -----------------------------------------------
+  # utter_ask_recipient:
+  #   - text: "Who would you like to send money to?"
+
+  # utter_ask_amount:
+  #   - text: "How much money would you like to send?"
+
+  # utter_transfer_complete:
+  #   - text: "All done. {amount} has been sent to {recipient}."
+
+  # utter_free_chitchat_response:
+  #   - text: "placeholder"
+  #     metadata:
+  #       rephrase: True
+  #       rephrase_prompt: |
+  #         The following is a conversation with an AI assistant built with Rasa.
+  #         The assistant can help the user transfer money.
+  #         The assistant is helpful, creative, clever, and very friendly.
+  #         The user is making small talk, and the assistant should respond, keeping things light.
+  #         Context / previous conversation with the user:
+  #         {{history}}
+  #         {{current_input}}
+  #         Suggested AI Response:
+
+actions:
+  - action_calculate_quiz_score
+  - action_provide_fun_fact

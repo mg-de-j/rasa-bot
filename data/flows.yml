@@ -1,8 +1,97 @@
 flows:
-  transfer_money:
-    description: Help users send money to friends and family.
+  greet_user:
+    description: user says hello or starts a conversation
     steps:
-      - collect: recipient
-      - collect: amount
-        description: the number of US dollars to send
-      - action: utter_transfer_complete
+      - action: utter_welcome
+
+  introduce_self:
+    description: user provides their name or introduces themselves
+    steps:
+      - collect: user_name
+      - action: utter_nice_to_meet
+
+  goodbye_user:
+    description: user says goodbye or wants to end the conversation
+    steps:
+      - action: utter_goodbye
+
+  quiz_flow:
+    description: Quiz flow met maximaal 15 vragen. Stopt als gebruiker 6 punten heeft of vragen op zijn.
+    steps:
+      - action: utter_start_quiz
+      
+      - collect: question_1
+      - collect: question_2
+      - collect: question_3
+      - collect: question_4
+      - collect: question_5 
+      - collect: question_6
+      - collect: question_7
+      - collect: question_8
+      - collect: question_9
+      - collect: question_10
+      
+      - action: action_calculate_quiz_score
+        next:
+          - if: slots.quiz_score < 6
+            then:
+              - collect: question_11
+              - action: action_calculate_quiz_score
+                next:
+                  - if: slots.quiz_score < 6
+                    then:
+                      - collect: question_12
+                      - action: action_calculate_quiz_score
+                        next:
+                          - if: slots.quiz_score < 6
+                            then:
+                              - collect: question_13
+                              - action: action_calculate_quiz_score
+                                next:
+                                  - if: slots.quiz_score < 6
+                                    then:
+                                      - collect: question_14
+                                      - action: action_calculate_quiz_score
+                                        next:
+                                          - if: slots.quiz_score < 6
+                                            then:
+                                              - collect: question_15
+                                              - action: action_calculate_quiz_score
+                                                next:
+                                                  - if: slots.quiz_score < 6
+                                                    then:
+                                                      - action: utter_no_more_questions
+                                                        next: show_results
+                                                  - else: show_results
+                                          - else: show_results
+                                  - else: show_results
+                          - else: show_results
+                  - else: show_results
+          - else: show_results
+
+      - action: utter_quiz_results
+        id: show_results
+
+  fact_flow:
+    description: user asks for a fun fact about history or a specific year
+    steps:
+      - collect: fact_year
+      - action: action_provide_fun_fact
+
+  # time_travel:
+  #   description: transport the user to a specific year in the past
+
+  
+
+  # -----------------------------------------------
+  # OUDE CODE
+  # -----------------------------------------------
+  # fact:
+  #   description: provide a fun fact about history or a specific year
+  # transfer_money:
+  #   description: Help users send money to friends and family.
+  #   steps:
+  #     - collect: recipient
+  #     - collect: amount
+  #       description: the number of US dollars to send
+  #     - action: utter_transfer_complete
