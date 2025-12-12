@@ -3,6 +3,7 @@ flows:
     description: user says hello or starts a conversation
     steps:
       - action: utter_welcome
+      - collect: activity
 
   introduce_self:
     description: user provides their name or introduces themselves
@@ -15,22 +16,38 @@ flows:
     steps:
       - action: utter_goodbye
 
-  # time_travel:
-  #   description: transport the user to a specific year in the past
+  menu:
+    description: this flow helps users pick a new topic, time travel, facts or quiz. 
+    steps:
+      - collect: activity
 
-  # quiz:
-  #   description: start a history quiz to test user knowledge
-
-  # -----------------------------------------------
-  # OUDE CODE
-  # -----------------------------------------------
-  # fact:
-  #   description: provide a fun fact about history or a specific year
-  # transfer_money:
-  #   description: Help users send money to friends and family.
-  #   steps:
-  #     - collect: recipient
-  #     - collect: amount
-  #       description: the number of US dollars to send
-  #     - action: utter_transfer_complete
-
+  time_travel:
+    description: The user wants to time travel, this flow helps them visit a time specified by the user.
+    steps:
+      - collect: era
+        description: |
+          The historical era the user wants to visit. Map user input as follows:
+          - "prehistoric" for dinosaurs, cavemen, stone age, ice age, or ancient pre-civilization times
+          - "classical" for ancient Rome, Greece, Egypt, Romans, Greeks, Caesar, gladiators, or ancient civilizations
+          - "medieval" for knights, castles, Middle Ages, feudal times, crusades, or medieval period
+        next:
+          - if: slots.era == "prehistoric"
+            then: prehistoric_step
+          
+          - if: slots.era == "classical"
+            then: classical_step
+          
+          - else: medieval_step
+      
+      - id: prehistoric_step
+        action: utter_prehistoric_info
+      
+      - id: classical_step
+        action: utter_classical_info
+      
+      - id: medieval_step
+        action: utter_medieval_info
+      
+      - action: utter_back_again
+      
+      - link: menu
