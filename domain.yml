@@ -92,7 +92,7 @@ slots:
       - type: controlled
 
   fact_year:
-    type: text 
+    type: text
     mappings:
       - type: from_llm
 
@@ -114,7 +114,6 @@ slots:
        - modern_world
     mappings:
     - type: from_llm
-
 
 responses:
   utter_welcome:
@@ -150,4 +149,51 @@ responses:
   utter_back_again:
     - text: "Wow, that was exiting! Want to do something else?"
 
-  
+###
+  utter_start_quiz:
+    - text: "Let's start the quiz! I'll ask you 10 questions."
+
+  utter_ask_question_1:
+    - text: "Question 1: Who was the first President of the USA?"
+  utter_ask_question_2:
+    - text: "Question 2: In which year did World War II end?"
+  utter_ask_question_3:
+    - text: "Question 3: Which empire was ruled by Julius Caesar?"
+  utter_ask_question_4:
+    - text: "Question 4: Who painted the Mona Lisa?"
+  utter_ask_question_5:
+    - text: "Question 5: What year did the Berlin Wall fall?"
+  utter_ask_question_6:
+    - text: "Question 6: Which country gifted the Statue of Liberty to the USA?"
+  utter_ask_question_7:
+    - text: "Question 7: Who was known as the 'Iron Lady'?"
+  utter_ask_question_8:
+    - text: "Question 8: Where were the first Olympic Games held?"
+  utter_ask_question_9:
+    - text: "Question 9: What ancient civilization built the pyramids?"
+  utter_ask_question_10:
+    - text: "Question 10: In which year did the Titanic sink?"
+  utter_ask_question_11:
+    - text: "Question 11: Who was the first man on the moon?"
+  utter_ask_question_12:
+    - text: "Question 12: Who was the British Prime Minister during World War II?"
+  utter_ask_question_13:
+    - text: "Question 13: Who invented the lightbulb?"
+  utter_ask_question_14:
+    - text: "Question 14: Who developed the theory of relativity?"
+  utter_ask_question_15:
+    - text: "Question 15: Which Roman city was destroyed by Mount Vesuvius?"
+
+  utter_quiz_results:
+    - text: "You have scored {quiz_score} points out of {questions_asked} questions asked!"
+
+  utter_no_more_questions:
+    - text: "That was the last question! Let's check your final score."
+
+  utter_ask_fact_year:
+    - text: "Which year would you like to know a fun fact about?"
+###
+
+actions:
+  - action_calculate_quiz_score
+  - action_provide_fun_fact

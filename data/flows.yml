@@ -17,7 +17,7 @@ flows:
       - action: utter_goodbye
 
   quiz_flow:
-    description: Quiz flow met maximaal 15 vragen. Stopt als gebruiker 6 punten heeft of vragen op zijn.
+    description: Quiz with at max 15 questions. It stops if the user has 6 questions correct or the 15 questions have been asked.
     steps:
       - action: utter_start_quiz
       
@@ -79,19 +79,6 @@ flows:
       - collect: fact_year
       - action: action_provide_fun_fact
   
-
-  # -----------------------------------------------
-  # OUDE CODE
-  # -----------------------------------------------
-  # fact:
-  #   description: provide a fun fact about history or a specific year
-  # transfer_money:
-  #   description: Help users send money to friends and family.
-  #   steps:
-  #     - collect: recipient
-  #     - collect: amount
-  #       description: the number of US dollars to send
-  #     - action: utter_transfer_complete
   menu:
     description: this flow helps users pick a new topic, time travel, facts or quiz. 
     steps:
