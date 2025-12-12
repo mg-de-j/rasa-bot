@@ -113,17 +113,55 @@ flows:
           - if: slots.era == "classical"
             then: classical_step
           
-          - else: medieval_step
+          - if: slots.era == "medieval"
+            then: medieval_step
+          
+          - if: slots.era == "renaissance"
+            then: renaissance_step
+          
+          - if: slots.era == "industrial_revolution"
+            then: industrial_revolution_step
+          
+          - if: slots.era == "20th_century"
+            then: 20th_century_step
+
+          - if: slots.era == "future"
+            then: future_step
+          
+          - else: don't_understand_step
       
       - id: prehistoric_step
-        action: utter_prehistoric_info
+        action: utter_prehistoric_timetravel
+        next: back_to_menu
       
       - id: classical_step
-        action: utter_classical_info
+        action: utter_classical_timetravel
+        next: back_to_menu
       
       - id: medieval_step
-        action: utter_medieval_info
+        action: utter_medieval_timetravel
+        next: back_to_menu
+
+      - id: renaissance_step
+        action: utter_renaissance_timetravel
+        next: back_to_menu
       
-      - action: utter_back_again
+      - id: industrial_revolution_step
+        action: utter_industrial_revolution_timetravel
+        next: back_to_menu
       
+      - id: 20th_century_step
+        action: utter_20th_century_timetravel
+        next: back_to_menu
+
+      - id: future_step
+        action: utter_future_timetravel
+        next: back_to_menu
+
+      - id: don't_understand_step
+        action: utter_don't_understand
+      - link: time_travel
+
+      - id: back_to_menu
+        action: utter_back_again
       - link: menu
