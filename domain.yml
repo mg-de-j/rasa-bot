@@ -115,6 +115,12 @@ slots:
     mappings:
     - type: from_llm
 
+  continue:
+    type: bool
+    mappings:
+      - type: from_llm
+
+
 responses:
   utter_welcome:
     - text: "Greetings, traveler! I am Chronos. Ready to explore the past."
@@ -137,6 +143,34 @@ responses:
   utter_ask_era:
     - text: "What historical era would you like to visit"
 
+  utter_ask_continue:
+    - text: "would you like to do another one, or do you want to choose another activity?"
+
+  #facts
+  utter_prehistoric_fact:
+    - text: "Some dinosaurs like the Velociraptor were actually covered in feathers, making them look more like giant, terrifying birds than reptiles."
+
+  utter_classical_fact:
+    - text: "In ancient Rome, people cleaned their clothes using urine—its ammonia content made it an effective cleaning agent!"
+
+  utter_medieval_fact:
+    - text: "Medieval castles sometimes had 'gargoyles' not just for decoration, but to act as drainage spouts that kept rainwater from running down the walls."
+
+  utter_renaissance_fact:
+    - text: "Leonardo da Vinci wrote many of his notes backward in mirror script, possibly to keep his ideas secret or simply because he found it easier as a left-hander."
+
+  utter_industrial_revolution_fact:
+    - text: "The first public train service in 1825 shocked people so much that some believed traveling over 30 mph could harm the human body."
+
+  utter_20th_century_fact:
+    - text: "During World War II, homing pigeons were used to carry secret messages—and some even received military medals for their service."
+
+  utter_future_fact:
+    - text: "Many scientists believe that future smart cities will be able to automatically repair themselves using swarms of tiny maintenance robots."
+
+  
+  
+  #time travel stories
   utter_prehistoric_timetravel:
     - text: "You blink and suddenly stand in a lush, steaming jungle filled with the cries of unseen giants. The ground trembles as a towering sauropod lumbers past, swaying the trees like blades of grass. Then a shadow falls over you—its massive jaw opening—and you realize a hungry T-rex has noticed you!"
   
@@ -164,7 +198,7 @@ responses:
   utter_back_again:
     - text: "Wow, that was exiting! Want to do something else?"
 
-###
+  #questions
   utter_start_quiz:
     - text: "Let's start the quiz! I'll ask you 10 questions."
 
@@ -212,3 +246,4 @@ responses:
 actions:
   - action_calculate_quiz_score
   - action_provide_fun_fact
+  - action_reset_era

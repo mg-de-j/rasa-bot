@@ -64,3 +64,12 @@ class ActionCalculateQuizScore(Action):
              SlotSet("quiz_score", float(score)),
              SlotSet("questions_asked", float(questions_asked))
         ]
+class ActionResetEra(Action):
+    def name(self) -> Text:
+        return "action_reset_era"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        return [SlotSet("era", None)]
