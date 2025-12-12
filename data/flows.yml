@@ -3,6 +3,7 @@ flows:
     description: user says hello or starts a conversation
     steps:
       - action: utter_welcome
+      - collect: activity
 
   introduce_self:
     description: user provides their name or introduces themselves
@@ -77,10 +78,6 @@ flows:
     steps:
       - collect: fact_year
       - action: action_provide_fun_fact
-
-  # time_travel:
-  #   description: transport the user to a specific year in the past
-
   
 
   # -----------------------------------------------
@@ -95,3 +92,38 @@ flows:
   #     - collect: amount
   #       description: the number of US dollars to send
   #     - action: utter_transfer_complete
+  menu:
+    description: this flow helps users pick a new topic, time travel, facts or quiz. 
+    steps:
+      - collect: activity
+
+  time_travel:
+    description: The user wants to time travel, this flow helps them visit a time specified by the user.
+    steps:
+      - collect: era
+        description: |
+          The historical era the user wants to visit. Map user input as follows:
+          - "prehistoric" for dinosaurs, cavemen, stone age, ice age, or ancient pre-civilization times
+          - "classical" for ancient Rome, Greece, Egypt, Romans, Greeks, Caesar, gladiators, or ancient civilizations
+          - "medieval" for knights, castles, Middle Ages, feudal times, crusades, or medieval period
+        next:
+          - if: slots.era == "prehistoric"
+            then: prehistoric_step
+          
+          - if: slots.era == "classical"
+            then: classical_step
+          
+          - else: medieval_step
+      
+      - id: prehistoric_step
+        action: utter_prehistoric_info
+      
+      - id: classical_step
+        action: utter_classical_info
+      
+      - id: medieval_step
+        action: utter_medieval_info
+      
+      - action: utter_back_again
+      
+      - link: menu

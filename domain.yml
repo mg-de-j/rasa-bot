@@ -1,5 +1,5 @@
 version: "3.1"
-
+    
 slots:
   user_name:
     type: text
@@ -96,21 +96,32 @@ slots:
     mappings:
       - type: from_llm
 
-  # -----------------------------------------------
-  # OUDE CODE
-  # -----------------------------------------------
-  # recipient:
-  #   type: text
-  #   mappings:
-  #     - type: from_llm
-  # amount:
-  #   type: float
-  #   mappings:
-  #     - type: from_llm
+  activity:
+    type: categorical
+    values: 
+      - time_travel
+      - fun_fact
+      - quiz
+  era:
+    type: categorical
+    values:
+       - prehistoric
+       - classical
+       - medieval
+       - renaissance
+       - industrial_revolution
+       - 20th_century
+       - modern_world
+    mappings:
+    - type: from_llm
+
 
 responses:
   utter_welcome:
-    - text: "Greetings, traveler! I am Chronos. Ready to explore the past"
+    - text: "Greetings, traveler! I am Chronos. Ready to explore the past."
+
+  utter_ask_activity:
+    - text: " You can ask me to time travel with you, tell you a fun fact or quiz you about historical era's."
 
   utter_ask_user_name:
     - text: "I need to know who I'm traveling with. What is your name?"
@@ -120,80 +131,23 @@ responses:
 
   utter_goodbye:
     - text: "Farewell! The timeline will miss you. Safe travels back to the present!"
-    - text: "Bye"
-    - text: "See you later alligator"
-    - text: "Cheers"
-    - text: "Well okay then. Bye."
 
-  utter_start_quiz:
-    - text: "Let's start the quiz! I'll ask you 10 questions."
+  utter_intro:
+    - text: "alright, lets travel back in time!"
+
+  utter_ask_era:
+    - text: "What historical era would you like to visit"
+
+  utter_prehistoric_info:
+    - text: "Welcome to the prehistoric era! You'll see dinosaurs and early life forms."
   
-  utter_ask_question_1:
-    - text: "Question 1: Who was the first President of the USA?"
-  utter_ask_question_2:
-    - text: "Question 2: In which year did World War II end?"
-  utter_ask_question_3:
-    - text: "Question 3: Which empire was ruled by Julius Caesar?"
-  utter_ask_question_4:
-    - text: "Question 4: Who painted the Mona Lisa?"
-  utter_ask_question_5:
-    - text: "Question 5: What year did the Berlin Wall fall?"
-  utter_ask_question_6:
-    - text: "Question 6: Which country gifted the Statue of Liberty to the USA?"
-  utter_ask_question_7:
-    - text: "Question 7: Who was known as the 'Iron Lady'?"
-  utter_ask_question_8:
-    - text: "Question 8: Where were the first Olympic Games held?"
-  utter_ask_question_9:
-    - text: "Question 9: What ancient civilization built the pyramids?"
-  utter_ask_question_10:
-    - text: "Question 10: In which year did the Titanic sink?"
-  utter_ask_question_11:
-    - text: "Question 11: Who was the first man on the moon?"
-  utter_ask_question_12:
-    - text: "Question 12: Who was the British Prime Minister during World War II?"
-  utter_ask_question_13:
-    - text: "Question 13: Who invented the lightbulb?"
-  utter_ask_question_14:
-    - text: "Question 14: Who developed the theory of relativity?"
-  utter_ask_question_15:
-    - text: "Question 15: Which Roman city was destroyed by Mount Vesuvius?"
+  utter_classical_info:
+    - text: "Welcome to the classical era! You'll experience ancient Rome, Greece, and their civilizations."
   
-  utter_quiz_results:
-    - text: "You have scored {quiz_score} points out of {questions_asked} questions asked!"
+  utter_medieval_info:
+    - text: "Welcome to the medieval era! You'll see knights, castles, and feudal societies."
 
-  utter_no_more_questions:
-    - text: "That was the last question! Let's check your final score."
+  utter_back_again:
+    - text: "Wow, that was exiting! Want to do something else?"
 
-  utter_ask_fact_year:
-    - text: "Which year would you like to know a fun fact about?"
-
-  # -----------------------------------------------
-  # OUDE CODE
-  # -----------------------------------------------
-  # utter_ask_recipient:
-  #   - text: "Who would you like to send money to?"
-
-  # utter_ask_amount:
-  #   - text: "How much money would you like to send?"
-
-  # utter_transfer_complete:
-  #   - text: "All done. {amount} has been sent to {recipient}."
-
-  # utter_free_chitchat_response:
-  #   - text: "placeholder"
-  #     metadata:
-  #       rephrase: True
-  #       rephrase_prompt: |
-  #         The following is a conversation with an AI assistant built with Rasa.
-  #         The assistant can help the user transfer money.
-  #         The assistant is helpful, creative, clever, and very friendly.
-  #         The user is making small talk, and the assistant should respond, keeping things light.
-  #         Context / previous conversation with the user:
-  #         {{history}}
-  #         {{current_input}}
-  #         Suggested AI Response:
-
-actions:
-  - action_calculate_quiz_score
-  - action_provide_fun_fact
+  
