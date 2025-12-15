@@ -149,7 +149,7 @@ responses:
   utter_back_again:
     - text: "Wow, that was exiting! Want to do something else?"
 
-###
+### Quiz Block
   utter_start_quiz:
     - text: "Let's start the quiz! I'll ask you 10 questions."
 
@@ -189,11 +189,11 @@ responses:
 
   utter_no_more_questions:
     - text: "That was the last question! Let's check your final score."
+###
 
   utter_ask_fact_year:
     - text: "Which year would you like to know a fun fact about?"
-###
+
 
 actions:
   - action_calculate_quiz_score
-  - action_provide_fun_fact
