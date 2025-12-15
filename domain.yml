@@ -126,7 +126,7 @@ responses:
     - text: "Greetings, traveler! I am Chronos. Ready to explore the past."
 
   utter_ask_activity:
-    - text: " You can ask me to time travel with you, tell you a fun fact or quiz you about historical era's."
+    - text: "You can ask me to time travel with you, tell you a fun fact or quiz you about historical eras."
 
   utter_ask_user_name:
     - text: "I need to know who I'm traveling with. What is your name?"
@@ -138,13 +138,13 @@ responses:
     - text: "Farewell! The timeline will miss you. Safe travels back to the present!"
 
   utter_intro:
-    - text: "alright, lets travel back in time!"
+    - text: "Alright, lets travel back in time!"
 
   utter_ask_era:
     - text: "What historical era would you like to visit"
 
   utter_ask_continue:
-    - text: "would you like to do another one, or do you want to choose another activity?"
+    - text: "Would you like to do another one, or do you want to choose another activity?"
 
   #facts
   utter_prehistoric_fact:
@@ -198,7 +198,7 @@ responses:
   utter_back_again:
     - text: "Wow, that was exiting! Want to do something else?"
 
-  #questions
+  #quiz questions
   utter_start_quiz:
     - text: "Let's start the quiz! I'll ask you 10 questions."
 
@@ -241,7 +241,6 @@ responses:
 
   utter_ask_fact_year:
     - text: "Which year would you like to know a fun fact about?"
-###
 
 actions:
   - action_calculate_quiz_score
