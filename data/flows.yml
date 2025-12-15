@@ -73,26 +73,20 @@ flows:
       - action: utter_quiz_results
         id: show_results
 
-  fact_flow:
-    description: user asks for a fun fact about history or a specific year
+  fun_fact:
+    description: tells the user a fun fact about a given era. It is triggered if the user asks for a fact. 
     steps:
-      - collect: fact_year
-      - action: action_provide_fun_fact
-  
-  menu:
-    description: this flow helps users pick a new topic, time travel, facts or quiz. 
-    steps:
-      - collect: activity
-
-  time_travel:
-    description: The user wants to time travel, this flow helps them visit a time specified by the user.
-    steps:
-      - collect: era
+      - id: ask_era_fact
+        collect: era
         description: |
           The historical era the user wants to visit. Map user input as follows:
           - "prehistoric" for dinosaurs, cavemen, stone age, ice age, or ancient pre-civilization times
           - "classical" for ancient Rome, Greece, Egypt, Romans, Greeks, Caesar, gladiators, or ancient civilizations
           - "medieval" for knights, castles, Middle Ages, feudal times, crusades, or medieval period
+          - "renaissance" for Leonardo da Vinci, Michelangelo, Florence, Italian city-states, Age of Discovery, explorers like Columbus, early modern art, or early scientific advancements
+          - "industrial_revolution" for steam engines, factories, Victorian era, coal power, early trains, textile mills, mass production, or 18th,19th century technological growth
+          - "20th_century" for World War I, World War II, trenches, soldiers, tanks, early airplanes, Nazis, Allies, or major early-1900s global conflicts
+          - "future" for futuristic cities, robots, AI, space travel, advanced technology, flying cars, distant future settings, dystopias, or utopias
         next:
           - if: slots.era == "prehistoric"
             then: prehistoric_step
@@ -100,17 +94,161 @@ flows:
           - if: slots.era == "classical"
             then: classical_step
           
-          - else: medieval_step
+          - if: slots.era == "medieval"
+            then: medieval_step
+          
+          - if: slots.era == "renaissance"
+            then: renaissance_step
+          
+          - if: slots.era == "industrial_revolution"
+            then: industrial_revolution_step
+          
+          - if: slots.era == "20th_century"
+            then: 20th_century_step
+
+          - if: slots.era == "future"
+            then: future_step
+          
+          - else: don't_understand_step
       
       - id: prehistoric_step
-        action: utter_prehistoric_info
+        action: utter_prehistoric_fact
+      - action: action_reset_era
+        next: ask_continue_fact
       
       - id: classical_step
-        action: utter_classical_info
+        action: utter_classical_fact
+      - action: action_reset_era
+        next: ask_continue_fact
       
       - id: medieval_step
-        action: utter_medieval_info
+        action: utter_medieval_fact
+      - action: action_reset_era
+        next: ask_continue_fact
+
+      - id: renaissance_step
+        action: utter_renaissance_fact
+      - action: action_reset_era
+        next: ask_continue_fact
       
-      - action: utter_back_again
+      - id: industrial_revolution_step
+        action: utter_industrial_revolution_fact
+      - action: action_reset_era
+        next: ask_continue_fact
       
-      - link: menu
+      - id: 20th_century_step
+        action: utter_20th_century_fact
+      - action: action_reset_era
+        next: ask_continue_fact
+
+      - id: future_step
+        action: utter_future_fact
+      - action: action_reset_era
+        next: ask_continue_fact
+
+      - id: don't_understand_step
+        action: utter_don't_understand
+      - action: action_reset_era
+        next: ask_era_fact
+
+      - id: ask_continue_fact
+        collect: continue
+        description: whether the user wants another fact or return to the menu
+        next:
+          - if: slots.continue == true
+            then: ask_era_fact
+          - else:
+              - link: menu
+
+  menu:
+    description: this flow helps users pick a new topic, time travel, facts or quiz. It is triggered after another flow.
+    steps:
+      - collect: activity
+
+  time_travel:
+    description: The user wants to time travel, this flow helps them visit a time specified by the user.
+    steps:
+      - id: ask_era_time_travel
+        collect: era
+        description: |
+          The historical era the user wants to visit. Map user input as follows:
+          - "prehistoric" for dinosaurs, cavemen, stone age, ice age, or ancient pre-civilization times, era< 10000 bce
+          - "classical" for ancient Rome, Greece, Egypt, Romans, Greeks, Caesar, gladiators, or ancient civilizations, 10000bce <era<500 ad
+          - "medieval" for knights, castles, Middle Ages, feudal times, crusades, or medieval period, 500 ad < era <1500ad
+          - "renaissance" for Leonardo da Vinci, Michelangelo, Florence, Italian city-states, Age of Discovery, explorers like Columbus, early modern art, or early scientific advancements, 1500 ad < era <1760ad
+          - "industrial_revolution" for steam engines, factories, Victorian era, coal power, early trains, textile mills, mass production, or 18th,19th century technological growth <1760ad era <1900ad
+          - "20th_century" for World War I, World War II, trenches, soldiers, tanks, early airplanes, Nazis, Allies, or major early-1900s global conflicts <1900ad era 2000ad
+          - "future" for futuristic cities, robots, AI, space travel, advanced technology, flying cars, distant future settings, dystopias, or utopias era> 2100ad
+        next:
+          - if: slots.era == "prehistoric"
+            then: prehistoric_step
+          
+          - if: slots.era == "classical"
+            then: classical_step
+          
+          - if: slots.era == "medieval"
+            then: medieval_step
+          
+          - if: slots.era == "renaissance"
+            then: renaissance_step
+          
+          - if: slots.era == "industrial_revolution"
+            then: industrial_revolution_step
+          
+          - if: slots.era == "20th_century"
+            then: 20th_century_step
+
+          - if: slots.era == "future"
+            then: future_step
+          
+          - else: don't_understand_step
+      
+      - id: prehistoric_step
+        action: utter_prehistoric_timetravel
+      - action: action_reset_era
+        next: ask_continue_timetravel
+      
+      - id: classical_step
+        action: utter_classical_timetravel
+      - action: action_reset_era
+        next: ask_continue_timetravel
+      
+      - id: medieval_step
+        action: utter_medieval_timetravel
+      - action: action_reset_era
+        next: ask_continue_timetravel
+
+      - id: renaissance_step
+        action: utter_renaissance_timetravel
+      - action: action_reset_era
+        next: ask_continue_timetravel
+      
+      - id: industrial_revolution_step
+        action: utter_industrial_revolution_timetravel
+      - action: action_reset_era
+        next: ask_continue_timetravel
+      
+      - id: 20th_century_step
+        action: utter_20th_century_timetravel
+      - action: action_reset_era
+        next: ask_continue_timetravel
+
+      - id: future_step
+        action: utter_future_timetravel
+      - action: action_reset_era
+        next: ask_continue_timetravel
+
+      - id: don't_understand_step
+        action: utter_don't_understand
+      - action: action_reset_era
+        next: ask_era_time_travel
+
+
+      - id: ask_continue_timetravel
+        collect: continue
+        description: whether the user wants to time travel again or return to the menu
+        next:
+          - if: slots.continue == true
+            then: ask_era_time_travel
+          - else:
+              - link: menu

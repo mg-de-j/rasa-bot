@@ -111,16 +111,22 @@ slots:
        - renaissance
        - industrial_revolution
        - 20th_century
-       - modern_world
+       - future
     mappings:
     - type: from_llm
+
+  continue:
+    type: bool
+    mappings:
+      - type: from_llm
+
 
 responses:
   utter_welcome:
     - text: "Greetings, traveler! I am Chronos. Ready to explore the past."
 
   utter_ask_activity:
-    - text: " You can ask me to time travel with you, tell you a fun fact or quiz you about historical era's."
+    - text: "You can ask me to time travel with you, tell you a fun fact or quiz you about historical eras."
 
   utter_ask_user_name:
     - text: "I need to know who I'm traveling with. What is your name?"
@@ -132,24 +138,67 @@ responses:
     - text: "Farewell! The timeline will miss you. Safe travels back to the present!"
 
   utter_intro:
-    - text: "alright, lets travel back in time!"
+    - text: "Alright, lets travel back in time!"
 
   utter_ask_era:
     - text: "What historical era would you like to visit"
 
-  utter_prehistoric_info:
-    - text: "Welcome to the prehistoric era! You'll see dinosaurs and early life forms."
+  utter_ask_continue:
+    - text: "Would you like to do another one, or do you want to choose another activity?"
+
+  #facts
+  utter_prehistoric_fact:
+    - text: "Some dinosaurs like the Velociraptor were actually covered in feathers, making them look more like giant, terrifying birds than reptiles."
+
+  utter_classical_fact:
+    - text: "In ancient Rome, people cleaned their clothes using urine—its ammonia content made it an effective cleaning agent!"
+
+  utter_medieval_fact:
+    - text: "Medieval castles sometimes had 'gargoyles' not just for decoration, but to act as drainage spouts that kept rainwater from running down the walls."
+
+  utter_renaissance_fact:
+    - text: "Leonardo da Vinci wrote many of his notes backward in mirror script, possibly to keep his ideas secret or simply because he found it easier as a left-hander."
+
+  utter_industrial_revolution_fact:
+    - text: "The first public train service in 1825 shocked people so much that some believed traveling over 30 mph could harm the human body."
+
+  utter_20th_century_fact:
+    - text: "During World War II, homing pigeons were used to carry secret messages—and some even received military medals for their service."
+
+  utter_future_fact:
+    - text: "Many scientists believe that future smart cities will be able to automatically repair themselves using swarms of tiny maintenance robots."
+
   
-  utter_classical_info:
-    - text: "Welcome to the classical era! You'll experience ancient Rome, Greece, and their civilizations."
   
-  utter_medieval_info:
-    - text: "Welcome to the medieval era! You'll see knights, castles, and feudal societies."
+  #time travel stories
+  utter_prehistoric_timetravel:
+    - text: "You blink and suddenly stand in a lush, steaming jungle filled with the cries of unseen giants. The ground trembles as a towering sauropod lumbers past, swaying the trees like blades of grass. Then a shadow falls over you—its massive jaw opening—and you realize a hungry T-rex has noticed you!"
+  
+  utter_classical_timetravel:
+    - text: "You arrive in the blazing sun of ancient Greece, materializing in the middle of an open-air market buzzing with philosophers and traders. Marble temples shimmer on the hilltop, their columns glowing gold in the morning light. Just as a young man in a toga begins sketching your strange clothing, a Roman legion marches in and history shifts before your eyes."
+  
+  utter_medieval_timetravel:
+    - text: "You stumble into a muddy village surrounded by towering wooden palisades, where peasants stop and gape at your unfamiliar attire. Knights on horseback thunder past on their way to a distant castle, banners whipping in the wind. When one of them demands to know which kingdom you serve, you decide it's definitely time to leave."
+
+  utter_renaissance_timetravel:
+    - text: "You find yourself in a bustling Italian workshop filled with gears, sketches, and half-built flying machines. A man with wild eyes and ink-stained fingers—none other than Leonardo da Vinci—circles you, muttering about “future-born miracles.” Before he can rope you into testing a prototype glider, you hit the return button on your device."
+  
+  utter_industrial_revolution_timetravel:
+    - text: "In an instant, the air thickens with smoke and steam as colossal factories rumble all around you. Workers hurry through crowded streets while iron locomotives scream past like metallic beasts. When sparks fly dangerously close to your hair, you realize the 19th century is far hotter—and far louder—than you expected."
+  
+  utter_20th_century_timetravel:
+    - text: "You tumble out of the time stream and straight into a muddy trench as sirens wail across a war-torn battlefield. Soldiers rush past you toward a battered radio post, shouting orders you barely understand over the thunder of distant artillery. When a bomber drones overhead and the ground shakes violently, you instantly realize this is one of the most dangerous times you could've visited."
+
+  utter_future_timetravel:
+    - text: "You step onto a floating city suspended above shimmering silver clouds, where drones glide like quiet birds. People communicate through holographic lights dancing above their palms, shifting shapes faster than speech. But when the sky suddenly ripples and a colossal AI-controlled ship materializes overhead, scanning for “temporal anomalies,” you decide it's best to leave before you become part of its data."
+
+  utter_don't_understand:
+    - text: "I don't understand, lets try again."
 
   utter_back_again:
     - text: "Wow, that was exiting! Want to do something else?"
 
-### Quiz Block
+  #quiz questions
   utter_start_quiz:
     - text: "Let's start the quiz! I'll ask you 10 questions."
 
@@ -194,6 +243,7 @@ responses:
   utter_ask_fact_year:
     - text: "Which year would you like to know a fun fact about?"
 
-
 actions:
   - action_calculate_quiz_score
+  - action_provide_fun_fact
+  - action_reset_era
