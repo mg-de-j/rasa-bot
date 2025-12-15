@@ -110,7 +110,7 @@ slots:
        - medieval
        - renaissance
        - industrial_revolution
-       - 20th_century
+       - early_20th_century
        - future
     mappings:
     - type: from_llm
@@ -162,8 +162,8 @@ responses:
   utter_industrial_revolution_fact:
     - text: "The first public train service in 1825 shocked people so much that some believed traveling over 30 mph could harm the human body."
 
-  utter_20th_century_fact:
-    - text: "During World War II, homing pigeons were used to carry secret messages—and some even received military medals for their service."
+  utter_early_20th_century_fact:
+    - text: "During World War I, homing pigeons were used to carry secret messages—and some even received military medals for their service."
 
   utter_future_fact:
     - text: "Many scientists believe that future smart cities will be able to automatically repair themselves using swarms of tiny maintenance robots."
@@ -186,7 +186,7 @@ responses:
   utter_industrial_revolution_timetravel:
     - text: "In an instant, the air thickens with smoke and steam as colossal factories rumble all around you. Workers hurry through crowded streets while iron locomotives scream past like metallic beasts. When sparks fly dangerously close to your hair, you realize the 19th century is far hotter—and far louder—than you expected."
   
-  utter_20th_century_timetravel:
+  utter_early_20th_century_timetravel:
     - text: "You tumble out of the time stream and straight into a muddy trench as sirens wail across a war-torn battlefield. Soldiers rush past you toward a battered radio post, shouting orders you barely understand over the thunder of distant artillery. When a bomber drones overhead and the ground shakes violently, you instantly realize this is one of the most dangerous times you could've visited."
 
   utter_future_timetravel:

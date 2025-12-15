@@ -85,7 +85,7 @@ flows:
           - "medieval" for knights, castles, Middle Ages, feudal times, crusades, or medieval period
           - "renaissance" for Leonardo da Vinci, Michelangelo, Florence, Italian city-states, Age of Discovery, explorers like Columbus, early modern art, or early scientific advancements
           - "industrial_revolution" for steam engines, factories, Victorian era, coal power, early trains, textile mills, mass production, or 18th,19th century technological growth
-          - "20th_century" for World War I, World War II, trenches, soldiers, tanks, early airplanes, Nazis, Allies, or major early-1900s global conflicts
+          - "early_20th_century" for World War I, World War II, trenches, soldiers, tanks, early airplanes, Nazis, Allies, or major early-1900s global conflicts
           - "future" for futuristic cities, robots, AI, space travel, advanced technology, flying cars, distant future settings, dystopias, or utopias
         next:
           - if: slots.era == "prehistoric"
@@ -103,8 +103,8 @@ flows:
           - if: slots.era == "industrial_revolution"
             then: industrial_revolution_step
           
-          - if: slots.era == "20th_century"
-            then: 20th_century_step
+          - if: slots.era == "early_20th_century"
+            then: early_20th_century_step
 
           - if: slots.era == "future"
             then: future_step
@@ -136,8 +136,8 @@ flows:
       - action: action_reset_era
         next: ask_continue_fact
       
-      - id: 20th_century_step
-        action: utter_20th_century_fact
+      - id: early_20th_century_step
+        action: utter_early_20th_century_fact
       - action: action_reset_era
         next: ask_continue_fact
 
@@ -177,7 +177,7 @@ flows:
           - "medieval" for knights, castles, Middle Ages, feudal times, crusades, or medieval period, 500 ad < era <1500ad
           - "renaissance" for Leonardo da Vinci, Michelangelo, Florence, Italian city-states, Age of Discovery, explorers like Columbus, early modern art, or early scientific advancements, 1500 ad < era <1760ad
           - "industrial_revolution" for steam engines, factories, Victorian era, coal power, early trains, textile mills, mass production, or 18th,19th century technological growth <1760ad era <1900ad
-          - "20th_century" for World War I, World War II, trenches, soldiers, tanks, early airplanes, Nazis, Allies, or major early-1900s global conflicts <1900ad era 2000ad
+          - "early_20th_century" for World War I, World War II, trenches, soldiers, tanks, early airplanes, Nazis, Allies, or major early-1900s global conflicts <1900ad era 2000ad
           - "future" for futuristic cities, robots, AI, space travel, advanced technology, flying cars, distant future settings, dystopias, or utopias era> 2100ad
         next:
           - if: slots.era == "prehistoric"
@@ -195,8 +195,8 @@ flows:
           - if: slots.era == "industrial_revolution"
             then: industrial_revolution_step
           
-          - if: slots.era == "20th_century"
-            then: 20th_century_step
+          - if: slots.era == "early_20th_century"
+            then: early_20th_century_step
 
           - if: slots.era == "future"
             then: future_step
@@ -228,8 +228,8 @@ flows:
       - action: action_reset_era
         next: ask_continue_timetravel
       
-      - id: 20th_century_step
-        action: utter_20th_century_timetravel
+      - id: early_20th_century_step
+        action: utter_early_20th_century_timetravel
       - action: action_reset_era
         next: ask_continue_timetravel
 
